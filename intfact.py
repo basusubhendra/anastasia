@@ -1,41 +1,52 @@
 #!/usr/bin/python3
 import sys
+from mpmath import *
 from pi import pi
 from e import e
+from zeros import zeros
 
 def characterize(num, l, pp, s):
-    cnt = 0
-    base_ctr = 0
-    state_vector_pp = []
     pp_index = 0
+    state_vector_pp = []
+    net_maturity = 0
     while True:
-        ctr = 0
-        pz = pi[:(base_ctr + ctr + 1)]
-        ez = e[:(base_ctr + ctr + 1)][::-1]
-        maturity = 0
-        for x in list(zip(pz, ez)):
-            if x[0] == x[1]:
-                maturity = maturity + 1
-        index = pp.index(str(maturity))
-        if index == pp_index:
-            pp_index = pp_index + len(str(maturity)) + 1
-            cnt = cnt + 1
-            ctr = ctr + 1
-            state_vector_pp.append(pz)
-            if ctr % l == 0:
-                break
+        hit = 0
+        base_ctr = 0
+        while True:
+            ctr = 0
+            pz = pi[:(base_ctr + ctr + 1)]
+            ez = e[:(base_ctr + ctr + 1)][::-1]
+            maturity = 0
+            for x in list(zip(pz, ez)):
+                if x[0] == x[1]:
+                    maturity = maturity + 1
+            index = pp.index(str(maturity)[::-1])
+            if index == pp_index:
+                net_maturity = net_maturity + maturity
+                hit = hit + 1
+                pp_index = pp_index + len(str(maturity))
+                ctr = ctr + 1
+                base_ctr = 0
+                state_vector_pp.append(pz)
+                if hit % l == 0:
+                    break
+            else:
+                base_ctr = base_ctr + l
+        if net_maturity in zeros:
+            zidx = []
+            init_index = 0
+            while True:
+                idx = zeros.index(net_maturity, init_index)
+                zidx.append(idx)
+                init_index = idx + 1
+                if not net_maturity in zeros[init_index:]:
+                    break
+            input([zidx, net_maturity, str(zetazero(zidx[0]+1).imag)])
+        """
         else:
-            base_ctr = base_ctr + l
-    lsp = len(state_vector_pp)
-    _ee = e[:lsp][::-1]
-    _pp = pi[:lsp]
-    _maturity = 0
-    for x in list(zip(_pp, _ee)):
-        if x[0] == x[1]:
-            _maturity = _maturity + int(x[0])
-    print(_maturity)
-    sys.exit(2)
-    
+            print("Not Mature Yet")
+            """
+
 def factorize(num, pp):
     l = len(num)
     factor = characterize(num, l, pp, sum(map(int, num)))
