@@ -4,6 +4,7 @@ from pi import pi
 from e import e
 from zeros import zeros
 MAX_LIMIT = 100
+num = str(sys.argv[1])
 f=open("./output.txt","r")
 line=f.readlines()
 s=line[0].split(",")[:-1]
