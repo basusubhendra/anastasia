@@ -9,7 +9,8 @@ def characterize(num, l, pp, s, prec):
     pp_index = 0
     state_vector_pp = []
     net_maturity = 0
-    while True:
+    hit2 = 0
+    while hit2 < l:
         hit = 0
         base_ctr = 0
         while True:
@@ -33,6 +34,7 @@ def characterize(num, l, pp, s, prec):
             else:
                 base_ctr = base_ctr + l
         if net_maturity in zeros:
+            hit2 = hit2 + 1
             zidx = []
             init_index = 0
             while True:
@@ -46,11 +48,9 @@ def characterize(num, l, pp, s, prec):
             mp.dps = prec
             for x in zidx:
                 zetazeros.append(str(zetazero(zidx[0]+1).imag))
-            input([zidx, net_maturity, zetazeros])
-        """
-        else:
-            print("Not Mature Yet")
-            """
+            print([zidx, net_maturity, zetazeros])
+            if hit2 % l == 0:
+                sys.exit(2)
 
 def factorize(num, pp, s, prec):
     l = len(num)
