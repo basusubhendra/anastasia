@@ -42,6 +42,8 @@ def characterize(num, l, pp, s):
                 if not net_maturity in zeros[init_index:]:
                     break
             zetazeros = []
+            mp.prec = 64
+            mp.dps = 64
             for x in zidx:
                 zetazeros.append(str(zetazero(zidx[0]+1).imag))
             input([zidx, net_maturity, zetazeros])
@@ -50,14 +52,17 @@ def characterize(num, l, pp, s):
             print("Not Mature Yet")
             """
 
-def factorize(num, pp):
+def factorize(num, pp, s):
     l = len(num)
-    factor = characterize(num, l, pp, sum(map(int, num)))
+    factor = characterize(num, l, pp, s)
     return factor
 
 num=str(sys.argv[1])
 print("Number Entered was: " + str(num))
-state_vector1 = factorize(num, pi)
-state_vector2 = factorize(num, e)
+c = num.count("0")
+s = sum(map(int, num)) + 10*c
+print("Sum of digits : " + str(s))
+state_vector1 = factorize(num, pi, s)
+state_vector2 = factorize(num, e, s)
 print(state_vector1)
 print(state_vector2)
