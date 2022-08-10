@@ -1,0 +1,75 @@
+#!/usr/bin/python3
+import sys
+from zeros import zeros
+from pi import pi
+
+def read(f, zz):
+    pp = ""
+    ctr = 0
+    f.seek(0)
+    while ctr < zz:
+        c = str(f.read(1))
+        ctr = ctr + 1
+        pp = pp + c
+    return pp
+
+def characterize(num, l, pp, s, prec):
+    fp = open("./pi.txt","r")
+    fe = open("./e.txt","r")
+    pp_index = 0
+    state_vector_pp = []
+    net_maturity = 0
+    hit2 = 0
+    while hit2 < l:
+        hit = 0
+        base_ctr = 0
+        while True:
+            ctr = 0
+            pz = read(fp, (base_ctr + ctr + 1))
+            ez = read(fe, (base_ctr + ctr + 1))[::-1]
+            maturity = 0
+            for x in list(zip(pz, ez)):
+                if x[0] == x[1]:
+                    maturity = maturity + 1
+            maturity = maturity % 10
+            index = pp.index(str(maturity)[::-1], pp_index)
+            if index == pp_index:
+                net_maturity = net_maturity + maturity
+                hit = hit + 1
+                pp_index = pp_index + len(str(maturity))
+                ctr = ctr + 1
+                base_ctr = 0
+                state_vector_pp.append(pz)
+                if hit == l:
+                    break
+            else:
+                base_ctr = base_ctr + l
+        if net_maturity in zeros:
+            hit2 = hit2 + 1
+            zidx = []
+            init_index = 0
+            while True:
+                idx = zeros.index(net_maturity, init_index)
+                zidx.append(idx)
+                init_index = idx + 1
+                if not net_maturity in zeros[init_index:]:
+                    break
+            zetazeros = []
+            print([hit2,zidx, net_maturity])
+            if hit2 == l:
+                fp.close()
+                fe.close()
+                sys.exit(2)
+
+def factorize(num, pp, s, prec):
+    l = len(num)
+    factor = characterize(num, l, pp, s, prec)
+    return factor
+
+num=str(sys.argv[1])
+print("Number Entered was: " + str(num))
+c = num.count("0")
+s = sum(map(int, num)) + 10*c
+prec = 2*s
+print("Sum of digits : " + str(s))
+state_vector1 = factorize(num, pi, s, prec)
