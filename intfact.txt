@@ -21,8 +21,7 @@ def characterize(num, l, pp, s, prec):
             for x in list(zip(pz, ez)):
                 if x[0] == x[1]:
                     maturity = maturity + 1
-            maturity = maturity % 100
-            index = pp.index(str(maturity)[::-1], pp_index)
+            index = pp.index(str(maturity)[::-1])
             if index == pp_index:
                 net_maturity = net_maturity + maturity
                 hit = hit + 1
