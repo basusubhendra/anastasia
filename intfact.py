@@ -7,6 +7,7 @@ def characterize(num, l, pp, s):
     cnt = 0
     base_ctr = 0
     state_vector_pp = []
+    pp_index = 0
     while True:
         ctr = 0
         pz = pi[:(base_ctr + ctr + 1)]
@@ -15,8 +16,9 @@ def characterize(num, l, pp, s):
         for x in list(zip(pz, ez)):
             if x[0] == x[1]:
                 maturity = maturity + 1
-        maturity = maturity % 10
-        if maturity == int(pp[cnt]):
+        index = pp.index(str(maturity))
+        if index == pp_index:
+            pp_index = pp_index + len(str(maturity)) + 1
             cnt = cnt + 1
             ctr = ctr + 1
             state_vector_pp.append(pz)
