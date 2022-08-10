@@ -2,6 +2,7 @@
 import sys
 from pi import pi
 from e import e
+from _zeros import zeros
 
 def read(f, zz):
     pp = ""
@@ -43,9 +44,9 @@ def characterize(num, l, pp):
                     break
             else:
                 base_ctr = base_ctr + l
-        hit2 = hit2 + 1
-        state_vector.append(state_vector_pp)
-        state_vector_pp = 0
+        if state_vector_pp in zeros:
+            hit2 = hit2 + 1
+            state_vector.append(state_vector_pp)
     return state_vector
 
 def factorize(num, pp):
