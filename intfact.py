@@ -41,7 +41,10 @@ def characterize(num, l, pp, s):
                 init_index = idx + 1
                 if not net_maturity in zeros[init_index:]:
                     break
-            input([zidx, net_maturity, str(zetazero(zidx[0]+1).imag)])
+            zetazeros = []
+            for x in zidx:
+                zetazeros.append(str(zetazero(zidx[0]+1).imag))
+            input([zidx, net_maturity, zetazeros])
         """
         else:
             print("Not Mature Yet")
