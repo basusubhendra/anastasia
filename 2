@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import sys
+from _zeros import zeros
 from pi import pi
 from e import e
 
@@ -13,12 +14,11 @@ def read(f, zz):
         pp = pp + c
     return pp
 
-def characterize(num, l, pp):
+def characterize(num, l, pp, s, prec):
     fp = open("./pi.txt","r")
     fe = open("./e.txt","r")
     pp_index = 0
     state_vector_pp = 0 
-    state_vector = []
     hit2 = 0
     while hit2 < l:
         hit = 0
@@ -34,6 +34,7 @@ def characterize(num, l, pp):
             maturity = maturity % 10
             index = pp.index(str(maturity)[::-1], pp_index)
             if index == pp_index:
+                net_maturity = net_maturity + maturity
                 hit = hit + 1
                 pp_index = pp_index + len(str(maturity))
                 ctr = ctr + 1
@@ -44,16 +45,17 @@ def characterize(num, l, pp):
             else:
                 base_ctr = base_ctr + l
         hit2 = hit2 + 1
-        state_vector.append(state_vector_pp)
-        state_vector_pp = 0
-    return state_vector
-
-def factorize(num, pp):
+        state_vector.
+def factorize(num, pp, s, prec):
     l = len(num)
-    state_vector = characterize(num, l, pp)
+    state_vector = characterize(num, l, pp, s, prec)
     return state_vector
 
 num=str(sys.argv[1])
 print("Number Entered was: " + str(num))
-state_vector = factorize(num, pi)
+c = num.count("0")
+s = sum(map(int, num)) + 10*c
+prec = 2*s
+print("Sum of digits : " + str(s))
+state_vector = factorize(num, pi, s, prec)
 print(state_vector)
