@@ -14,7 +14,7 @@ def read(f, zz):
         pp = pp + c
     return pp
 
-def characterize(num, l, pp):
+def characterize(l, pp):
     fp = open("./pi.txt","r")
     fe = open("./e.txt","r")
     pp_index = 0
@@ -56,12 +56,10 @@ def characterize(num, l, pp):
             state_vector_pp = 0
     return state_vector
 
-def factorize(num, pp):
-    l = len(num)
-    state_vector = characterize(num, l, pp)
+def factorize(l, pp):
+    state_vector = characterize(l, pp)
     return state_vector
 
-num=str(sys.argv[1])
-print("Number Entered was: " + str(num))
-state_vector = factorize(num, pi)
+l=int(sys.argv[1])
+state_vector = factorize(l, pi)
 print(state_vector)
