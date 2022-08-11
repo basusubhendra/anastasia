@@ -37,10 +37,10 @@ def compute(_pp, _ee, n1, n2):
         else:
             sum_dr = sum_dr + int(x[1])
         if hash_map_nr[int(x[0])] == int(n1) and hash_map_dr[int(x[1])] == int(n2):
-            delta = sum_nr - sum_dr
+            delta = [sum_nr , sum_dr]
             break
         elif hash_map_nr[int(x[1])] == int(n1) and hash_map_dr[int(x[0])] == int(n2):
-            delta = -(sum_nr - sum_dr)
+            delta = [sum_dr , sum_nr]
             break
     return delta
 

@@ -65,3 +65,6 @@ l=int(sys.argv[1])
 state_vector = factorize(l, pi)
 print(state_vector)
 """
+if __name__ == "__main__":
+    n = str(sys.argv[1])
+    print(characterize(int(n), pi))
