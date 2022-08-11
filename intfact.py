@@ -52,7 +52,7 @@ def characterize(l, pp):
                  net_maturity = net_maturity + 1
         if net_maturity in zeros:
             hit2 = hit2 + 1
-            state_vector.append(state_vector_pp)
+            state_vector.append(net_maturity)
             state_vector_pp = 0
     return state_vector
 
