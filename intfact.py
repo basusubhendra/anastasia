@@ -91,19 +91,23 @@ if __name__ == "__main__":
     print("End of Pi-E Factorization Phase")
     end = time.process_time()
     print("Time Taken = " + str(end-start))
+    """
     start = time.process_time()
     _state_vector_1_e = factorize(num, state_vector1, e, pi)
     print(_state_vector_1_e)
     print("End of E-Pi Factorization Phase")
+    """
     end = time.process_time()
     print("Time Taken = " + str(end-start))
     print("End of Compute of Factor 1")
+    """
     start = time.process_time()
     _state_vector_2_pi = factorize(num, state_vector2, pi, e)
     print(_state_vector_2_pi)
     print("End of Pi-E Factorization Phase")
     end = time.process_time()
     print("Time Taken = " + str(end-start))
+    """
     start = time.process_time()
     _state_vector_2_e = factorize(num, state_vector2, e, pi)
     print(_state_vector_2_e)
