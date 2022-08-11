@@ -56,6 +56,7 @@ def characterize(l, pp):
             state_vector_pp = 0
     return state_vector
 
+"""
 def factorize(l, pp):
     state_vector = characterize(l, pp)
     return state_vector
@@ -63,3 +64,4 @@ def factorize(l, pp):
 l=int(sys.argv[1])
 state_vector = factorize(l, pi)
 print(state_vector)
+"""
