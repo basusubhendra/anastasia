@@ -6,7 +6,7 @@ from pi import pi
 from e import e
 
 def factorize(num, sv, pp, ee):
-    ctr = 0
+    ctr = 1
     s1 = sv[ctr]
     stats = []
     l = len(num)
@@ -89,6 +89,7 @@ if __name__ == "__main__":
     print(" ")
     print(" ")
     print("Start of Factorization Phase")
+    """
     print(" ")
     start = time.process_time()
     factorize(num, state_vector1, pi, e)
@@ -97,9 +98,10 @@ if __name__ == "__main__":
     end = time.process_time()
     print("Time Taken = " + str(end-start))
     print(" ")
+    """
     start = time.process_time()
     factorize(num, state_vector2, pi, e)
-    #_state_vector_1_pi = factorize(num, state_vector1, pi, e)
+    #_state_vector_1_pi = factorize(num, state_vector2, pi, e)
     #print(_state_vector_1_pi)
     end = time.process_time()
     print("Time Taken = " + str(end-start))
