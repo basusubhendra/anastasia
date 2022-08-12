@@ -5,9 +5,6 @@ from characterize import *
 from pi import pi
 from e import e
 
-def compute(_pp, _ee, n1, n2):
-    pass
-
 def factorize(num, sv, pp, ee):
     pass
 
@@ -20,7 +17,6 @@ if __name__ == "__main__":
     start = time.process_time()
     state_vector1 = characterize(l, pi)
     end = time.process_time()
-    print("End of Pi Characterization")
     print("Time Taken = " + str(end-start))
     print(" ")
     print("End of Characterization Phase")
