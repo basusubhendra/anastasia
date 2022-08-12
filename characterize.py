@@ -20,7 +20,8 @@ def characterize(l, pp):
     pp_index = 0
     state_vector_pp = 0 
     state_vector = []
-    while True:
+    hit2 = 0
+    while hit2 < l:
         hit = 0
         base_ctr = 0
         while True:
@@ -50,9 +51,9 @@ def characterize(l, pp):
             if m[0] == m[1]:
                  net_maturity = net_maturity + 1
         if net_maturity in zeros:
+            hit2 = hit2 + 1
             state_vector.append(net_maturity)
             state_vector_pp = 0
-            break
     return state_vector
 
 if __name__ == "__main__":
