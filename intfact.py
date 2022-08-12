@@ -36,6 +36,10 @@ def factorize(num, sv, pp, ee):
            _pp = pp[:x]
            _ee = ee[:x][::-1]
            sum_x = 0
+           print(_pp)
+           print(_ee)
+           print(s1, s2, nn)
+           input("Enter")
            for z in list(zip(_pp, _ee)):
                zs1 = 0
                zs2 = 0
