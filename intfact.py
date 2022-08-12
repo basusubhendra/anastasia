@@ -76,7 +76,6 @@ if __name__ == "__main__":
     time1 = end - start
     print("Time Taken = " + str(end-start))
     print(state_vector1)
-    """
     print(" ")
     start = time.process_time()
     state_vector2 = characterize(l, e)
@@ -86,7 +85,6 @@ if __name__ == "__main__":
     print(state_vector2)
     print(" ")
     print("Total Time Taken = " + str(time1 + time2))
-    """
     print("End of Characterization Phase")
     print(" ")
     print(" ")
@@ -99,7 +97,6 @@ if __name__ == "__main__":
     end = time.process_time()
     print("Time Taken = " + str(end-start))
     print(" ")
-    """
     start = time.process_time()
     factorize(num, state_vector2, pi, e)
     #_state_vector_1_pi = factorize(num, state_vector1, pi, e)
@@ -107,5 +104,4 @@ if __name__ == "__main__":
     end = time.process_time()
     print("Time Taken = " + str(end-start))
     print(" ")
-    """
     print("End of Factorization Phase")
