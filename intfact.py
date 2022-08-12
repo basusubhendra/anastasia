@@ -13,7 +13,6 @@ def factorize(num, sv, pp, ee):
         n1 = num[cnt]
         n2 = num[-(cnt + 1)]
         nn = n2 + n1
-        print(nn)
         ns = ""
         if int(nn) < 10:
             ns = int(nn) + 100
