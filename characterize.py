@@ -21,8 +21,7 @@ def characterize(l, pp):
     state_vector_pp = 0 
     state_vector = []
     hit2 = 0
-    mid = int(l / 2)
-    while hit2 <= mid:
+    while hit2 <= l:
         hit = 0
         base_ctr = 0
         while True:
