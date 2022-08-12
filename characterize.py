@@ -21,7 +21,8 @@ def characterize(l, pp):
     state_vector_pp = 0 
     state_vector = []
     hit2 = 0
-    while hit2 < l:
+    mid = int(l / 2)
+    while hit2 <= mid:
         hit = 0
         base_ctr = 0
         while True:
@@ -56,15 +57,6 @@ def characterize(l, pp):
             state_vector_pp = 0
     return state_vector
 
-"""
-def factorize(l, pp):
-    state_vector = characterize(l, pp)
-    return state_vector
-
-l=int(sys.argv[1])
-state_vector = factorize(l, pi)
-print(state_vector)
-"""
 if __name__ == "__main__":
     n = str(sys.argv[1])
     print(characterize(int(n), pi))
