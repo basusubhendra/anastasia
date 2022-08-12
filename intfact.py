@@ -18,10 +18,9 @@ if __name__ == "__main__":
     state_vector1 = characterize(l, pi)
     end = time.process_time()
     time1 = end - start
-    print("Time Taken = " + str(end-start))
     print(state_vector1)
     print(" ")
-    print("Total Time Taken = " + str(time1 + time2))
+    print("Time Taken = " + str(end-start))
     print("End of Characterization Phase")
     print(" ")
     print(" ")
