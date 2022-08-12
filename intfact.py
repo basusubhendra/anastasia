@@ -83,6 +83,7 @@ if __name__ == "__main__":
     time2 = end - start
     print("Time Taken = " + str(end-start))
     print(state_vector2)
+    sys.exit(2)
     print(" ")
     print("Total Time Taken = " + str(time1 + time2))
     print("End of Characterization Phase")
