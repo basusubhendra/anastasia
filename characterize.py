@@ -50,10 +50,11 @@ def characterize(l, pp):
             if m[0] == m[1]:
                  net_maturity = net_maturity + 1
         if net_maturity in zeros:
-            state_vector.append(net_maturity)
-            break
-    return state_vector
+            return net_maturity
 
 if __name__ == "__main__":
     n = str(sys.argv[1])
-    print(characterize(int(n), pi))
+    stats = []
+    for x in range(1, int(n) + 1):
+        stats.append(characterize(int(x), pi))
+    print(stats)
