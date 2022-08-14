@@ -2,6 +2,8 @@
 import sys
 from pi import pi
 from e import e
+from zeros1 import *
+from zeros2 import *
 from _zeros import zeros
 
 def read(f, zz):
