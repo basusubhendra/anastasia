@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
-from mpmath import *
 from _zeros import zeros
+from zeros1 import zeros1
 from pi import pi
 from e import e
 
@@ -52,7 +52,7 @@ def characterize(l, pp):
             if m[0] == m[1]:
                  net_maturity = net_maturity + 1
         if net_maturity in zeros:
-            return zeros.index(net_maturity) + 1
+            return zeros.index(net_maturity)
 
 if __name__ == "__main__":
     n = int(sys.argv[1])
@@ -71,11 +71,11 @@ if __name__ == "__main__":
         zz_set = []
         if s0 <= s1:
             for x in range(s0, s1 + 1):
-                zz = str(zetazero(x).imag)[:MAX_DIGITS].replace(".","")
+                zz = str(zeros1[x])
                 zz_set.append(zz)
         elif s0 > s1:
             for x in range(s0, s1 - 1, -1):
-                zz = str(zetazero(x).imag)[:MAX_DIGITS].replace(".","")
+                zz = str(zeros1[x])
                 zz_set.append(zz)
             zz_set = zz_set[::-1]
         for x in zz_set:
