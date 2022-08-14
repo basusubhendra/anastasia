@@ -1,21 +1,13 @@
 #!/usr/bin/python3
 import sys
 def solver(zz_set, num):
-    found = False
-    for x in zz_set:
-        if "00" in x:
-            found = True
-            break
-    if found == False:
-        print("Unsolved")
-        return None
     prev_ctr = -1
     ctr = 0
     l = len(num)
     _l = len(zz_set)
     cnt = 0
     nk = int(num[ctr % l])
-    col_count = 0
+    col_count = 1
     snippet = []
     _exit_ = False
     cols = []
@@ -30,14 +22,15 @@ def solver(zz_set, num):
            else:
                break
            nk = nk - 1
-        if nk == 0 and not "0" in zk[i_index + 1:]:
-           if prev_ctr % l == ctr % l:
+        if nk == 0:
+           if prev_ctr > -1 and prev_ctr % l == ctr % l:
                _exit_ = True
            prev_ctr = ctr
            ctr = ctr + 1
+           nk = int(num[ctr % l])
+        if _exit_ == True:
+            break
         while nk == 0 and "0" in zk[i_index + 1:]:
-           if (prev_ctr % l) == (ctr % l):
-               _exit_ = True
            prev_ctr = ctr
            ctr = ctr + 1
            nk = int(num[ctr % l])
@@ -47,13 +40,11 @@ def solver(zz_set, num):
                if not ctr % l in cols:
                    snippet.append(col_count)
                    input([col_count, ctr % l])
-                   col_count = 0
+                   col_count = 1
                    cols.append(ctr % l)
                else:
                    _exit_ = True
            nk = nk - 1
-        if _exit_ == True:
-            break
         if not "0" in zk[i_index + 1:]:
             cnt = cnt + 1
             if cnt % _l == 0:
