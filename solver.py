@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 import sys
 def solver(zz_set, num):
+    found = False
+    for x in zz_set:
+        if "00" in x:
+            found = True
+            break
+    if found == False:
+        print("Unsolved")
+        return None
     prev_ctr = -1
     ctr = 0
     l = len(num)
