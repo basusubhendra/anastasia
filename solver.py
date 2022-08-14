@@ -28,8 +28,9 @@ def solver(zz_set, num):
            nk = int(num[ctr % l])
            prev_index = i_index
            i_index = zk.index("0", i_index + 1)
-           if i_index == prev_index + 1:
+           if prev_index > -1 and i_index == prev_index + 1:
                snippet.append(col_count)
+               input(col_count)
            nk = nk - 1
         if not "0" in zk[i_index + 1:]:
             cnt = cnt + 1
