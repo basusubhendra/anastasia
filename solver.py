@@ -22,7 +22,7 @@ def solver(zz_set, num):
                break
            nk = nk - 1
         while nk == 0 and "0" in zk[i_index + 1:]:
-           if prev_ctr == ctr:
+           if (prev_ctr % l) == (ctr % l):
                _exit_ = True
            prev_ctr = ctr
            ctr = ctr + 1
@@ -30,14 +30,18 @@ def solver(zz_set, num):
            prev_index = i_index
            i_index = zk.index("0", i_index + 1)
            if prev_index > -1 and i_index == prev_index + 1:
-               snippet.append(col_count)
-               input(col_count)
-               col_count = 0
+               if not ctr % l in cols:
+                   snippet.append(col_count)
+                   input([col_count, ctr % l])
+                   col_count = 0
+                   cols.append(ctr % l)
+               else:
+                   _exit_ = True
            nk = nk - 1
+        if _exit_ == True:
+            break
         if not "0" in zk[i_index + 1:]:
             cnt = cnt + 1
             if cnt % _l == 0:
                 col_count = col_count + 1
-        if _exit_ == True:
-            break
     return snippet[::-1]
