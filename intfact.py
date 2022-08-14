@@ -26,9 +26,11 @@ if __name__ == "__main__":
                 zz = str(zeros1[x])
                 zz_set.append(zz)
             zz_set = zz_set[::-1]
+        """
         for x in zz_set:
             print(x)
         print(" ")
+        """
         snippet = solver(zz_set, num)
         input(snippet)
         """
