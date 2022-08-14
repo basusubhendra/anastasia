@@ -9,6 +9,8 @@ def solver(zz_set, num):
     col_count = 1
     zk = zz_set[cnt % _l]
     cols = []
+    sumx = 0
+    last_ctr = 0
     while True:
         i_index = -1
         reset = False
@@ -20,6 +22,12 @@ def solver(zz_set, num):
                cnt = cnt + 1
                if cnt % _l == 0:
                    reset = True
+                   delta = ctr - last_ctr
+                   sumx = sumx + delta
+                   y = input(float(sumx / l))
+                   if y == 'y':
+                       return None
+                   last_ctr = ctr
                    col_count = col_count + 1
                zk = zz_set[cnt % _l]
            nk = nk - 1
@@ -28,5 +36,4 @@ def solver(zz_set, num):
         if reset == True and ctr % l == 0:
             break
         nk = int(num[ctr % l])
-    input(col_count)
     return col_count
