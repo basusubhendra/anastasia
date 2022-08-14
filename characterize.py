@@ -68,25 +68,19 @@ if __name__ == "__main__":
     while ctr < len(stats) - 1:
         print("<<<< " + str(ctr + 1) + " <<<< ")
         s1 = stats[ctr + 1]
+        zz_set = []
         if s0 <= s1:
-            zz_set = []
             for x in range(s0, s1 + 1):
-                zz = str(zetazero(x).imag)[:MAX_DIGITS]
+                zz = str(zetazero(x).imag)[:MAX_DIGITS].replace(".","")
                 zz_set.append(zz)
-            #print(zz_set)
-            for z in zz_set:
-                print(z)
-            print(" ")
         elif s0 > s1:
-            zz_set = []
             for x in range(s0, s1 - 1, -1):
-                zz = str(zetazero(x).imag)[:MAX_DIGITS]
+                zz = str(zetazero(x).imag)[:MAX_DIGITS].replace(".","")
                 zz_set.append(zz)
             zz_set = zz_set[::-1]
-            #print(zz_set)
-            for z in zz_set:
-                print(z)
-            print(" ")
+        for x in zz_set:
+            print(x)
+        print(" ")
         ctr = ctr + 1 
         s0 = stats[ctr]
         print(" ")
