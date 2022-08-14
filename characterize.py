@@ -52,12 +52,11 @@ def characterize(l, pp):
             if m[0] == m[1]:
                  net_maturity = net_maturity + 1
         if net_maturity in zeros:
-            return zeros.index(net_maturity)
+            return zeros.index(net_maturity) + 1
 
 if __name__ == "__main__":
-    num = str(sys.argv[1])
+    n = int(sys.argv[1])
     stats = []
-    n = len(num)
     for x in range(1, int(n) + 1):
-        stats.append([characterize(int(x), pi), int(num[x-1])])
+        stats.append(characterize(int(x), pi))
     print(stats)
