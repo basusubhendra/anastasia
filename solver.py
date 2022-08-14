@@ -10,6 +10,7 @@ def solver(zz_set, num):
     col_count = 0
     snippet = []
     _exit_ = False
+    cols = []
     while True:
         zk = zz_set[cnt % _l]
         i_index = -1
