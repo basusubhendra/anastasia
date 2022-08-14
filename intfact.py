@@ -5,10 +5,8 @@ from characterize import *
 from solver import *
 
 if __name__ == "__main__":
-    n = int(sys.argv[1])
-    num = ""
-    if len(sys.argv) > 2:
-       num = str(sys.argv[2])
+    num = str(sys.argv[2])
+    n = len(num)
     stats = []
     for x in range(1, int(n) + 1):
         stats.append(characterize(int(x), pi))
