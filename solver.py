@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 def solver(zz_set, num):
+    prev_ctr = -1
     ctr = 0
     l = len(num)
     _l = len(zz_set)
@@ -35,7 +36,7 @@ def solver(zz_set, num):
         if not "0" in zk[i_index + 1:]:
             cnt = cnt + 1
             if cnt % _l == 0:
-                col_cnt = col_cnt + 1
+                col_count = col_count + 1
         if _exit_ == True:
             break
     return snippet[::-1]
