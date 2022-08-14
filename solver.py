@@ -26,6 +26,7 @@ def solver(zz_set, num):
                        col_count = 1
                    else:
                        _exit_ = True
+                       break
            nk = nk - 1
         if _exit_ == True:
             break
