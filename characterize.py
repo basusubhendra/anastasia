@@ -5,6 +5,7 @@ from _zeros import zeros
 from pi import pi
 from e import e
 
+MAX_DIGITS = 8
 def read(f, zz):
     pp = ""
     ctr = 0
@@ -55,6 +56,9 @@ def characterize(l, pp):
 
 if __name__ == "__main__":
     n = int(sys.argv[1])
+    num = ""
+    if len(sys.argv) >= 2:
+       num = str(sys.argv[2])
     stats = []
     for x in range(1, int(n) + 1):
         stats.append(characterize(int(x), pi))
@@ -64,14 +68,17 @@ if __name__ == "__main__":
     while ctr < len(stats) - 1:
         s1 = stats[ctr + 1]
         if s0 <= s1:
+            zz_set = []
             for x in range(s0, s1 + 1):
-                zz = str(zetazero(x).imag)[:9]
-                print(zz)
+                zz = str(zetazero(x).imag)[:MAX_DIGITS]
+                zz_set.append(zz)
+            print(zz_set)
         elif s0 > s1:
+            zz_set = []
             for x in range(s0, s1 - 1, -1):
-                zz = str(zetazero(x).imag)[:9]
-                print(zz)
+                zz = str(zetazero(x).imag)[:MAX_DIGITS]
+                zz_set.append(zz)
+            print(zz_set)
         ctr = ctr + 1 
         s0 = stats[ctr]
-        print(" ")
         print(" ")
