@@ -57,7 +57,7 @@ def characterize(l, pp):
 if __name__ == "__main__":
     n = int(sys.argv[1])
     num = ""
-    if len(sys.argv) >= 2:
+    if len(sys.argv) > 2:
        num = str(sys.argv[2])
     stats = []
     for x in range(1, int(n) + 1):
@@ -72,13 +72,19 @@ if __name__ == "__main__":
             for x in range(s0, s1 + 1):
                 zz = str(zetazero(x).imag)[:MAX_DIGITS]
                 zz_set.append(zz)
-            print(zz_set)
+            #print(zz_set)
+            for z in zz_set:
+                print(z)
+            print(" ")
         elif s0 > s1:
             zz_set = []
             for x in range(s0, s1 - 1, -1):
                 zz = str(zetazero(x).imag)[:MAX_DIGITS]
                 zz_set.append(zz)
-            print(zz_set)
+            #print(zz_set)
+            for z in zz_set:
+                print(z)
+            print(" ")
         ctr = ctr + 1 
         s0 = stats[ctr]
         print(" ")
