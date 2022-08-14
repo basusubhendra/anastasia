@@ -52,7 +52,7 @@ def characterize(l, pp):
             if m[0] == m[1]:
                  net_maturity = net_maturity + 1
         if net_maturity in zeros:
-            return net_maturity
+            return zeros.index(net_maturity) + 1
 
 if __name__ == "__main__":
     num = str(sys.argv[1])
