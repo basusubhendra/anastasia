@@ -30,6 +30,11 @@ def solver(zz_set, num):
            else:
                break
            nk = nk - 1
+        if nk == 0 and not "0" in zk[i_index + 1:]:
+           if prev_ctr % l == ctr % l:
+               _exit_ = True
+            prev_ctr = ctr
+            ctr = ctr + 1
         while nk == 0 and "0" in zk[i_index + 1:]:
            if (prev_ctr % l) == (ctr % l):
                _exit_ = True
