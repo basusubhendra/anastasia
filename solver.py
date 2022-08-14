@@ -11,18 +11,22 @@ def solver(zz_set, num):
     cols = []
     while True:
         i_index = -1
+        reset = False
         while nk > 0:
+           reset = False
            if "0" in zk[i_index+1:]:
                i_index = zk.index("0", i_index + 1)
            else:
                cnt = cnt + 1
                if cnt % _l == 0:
+                   reset = True
                    col_count = col_count + 1
                zk = zz_set[cnt % _l]
            nk = nk - 1
         cols.append(col_count)
-        input([col_count, ctr])
         ctr = ctr + 1
+        if reset == True and ctr % l == 0:
+            break
         nk = int(num[ctr % l])
-        col_count = 1
-    return cols[::-1]
+    input(col_count)
+    return col_count
