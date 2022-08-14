@@ -29,8 +29,9 @@ if __name__ == "__main__":
         for x in zz_set:
             print(x)
         print(" ")
-        """
         snippet = solver(zz_set, num)
+        input(snippet)
+        """
         _stats.append(snippet[::-1])
         """
         ctr = ctr + 1 
