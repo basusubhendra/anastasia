@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 import sys
 from _zeros import zeros
-from zeros1 import zeros1
 from pi import pi
 from e import e
 
-MAX_DIGITS = 8
 def read(f, zz):
     pp = ""
     ctr = 0
@@ -54,33 +52,3 @@ def characterize(l, pp):
         if net_maturity in zeros:
             return zeros.index(net_maturity)
 
-if __name__ == "__main__":
-    n = int(sys.argv[1])
-    num = ""
-    if len(sys.argv) > 2:
-       num = str(sys.argv[2])
-    stats = []
-    for x in range(1, int(n) + 1):
-        stats.append(characterize(int(x), pi))
-    print(stats)
-    ctr = 0
-    s0 = stats[ctr]
-    while ctr < len(stats) - 1:
-        print("<<<< " + str(ctr + 1) + " <<<< ")
-        s1 = stats[ctr + 1]
-        zz_set = []
-        if s0 <= s1:
-            for x in range(s0, s1 + 1):
-                zz = str(zeros1[x])
-                zz_set.append(zz)
-        elif s0 > s1:
-            for x in range(s0, s1 - 1, -1):
-                zz = str(zeros1[x])
-                zz_set.append(zz)
-            zz_set = zz_set[::-1]
-        for x in zz_set:
-            print(x)
-        print(" ")
-        ctr = ctr + 1 
-        s0 = stats[ctr]
-        print(" ")
