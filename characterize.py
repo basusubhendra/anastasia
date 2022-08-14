@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 import sys
+from mpmath import *
+from _zeros import zeros
 from pi import pi
 from e import e
-from zeros1 import *
-from zeros2 import *
-from _zeros import zeros
 
 def read(f, zz):
     pp = ""
@@ -60,3 +59,19 @@ if __name__ == "__main__":
     for x in range(1, int(n) + 1):
         stats.append(characterize(int(x), pi))
     print(stats)
+    ctr = 0
+    s0 = stats[ctr]
+    while ctr < len(stats) - 1:
+        s1 = stats[ctr + 1]
+        if s0 <= s1:
+            for x in range(s0, s1 + 1):
+                zz = str(zetazero(x).imag)[:9]
+                print(zz)
+        elif s0 > s1:
+            for x in range(s0, s1 - 1, -1):
+                zz = str(zetazero(x).imag)[:9]
+                print(zz)
+        ctr = ctr + 1 
+        s0 = stats[ctr]
+        print(" ")
+        print(" ")
