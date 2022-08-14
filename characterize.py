@@ -81,6 +81,7 @@ if __name__ == "__main__":
             for x in range(s0, s1 - 1, -1):
                 zz = str(zetazero(x).imag)[:MAX_DIGITS]
                 zz_set.append(zz)
+            zz_set = zz_set[::-1]
             #print(zz_set)
             for z in zz_set:
                 print(z)
