@@ -66,6 +66,7 @@ if __name__ == "__main__":
     ctr = 0
     s0 = stats[ctr]
     while ctr < len(stats) - 1:
+        print("<<<< " + str(ctr + 1) + " <<<< ")
         s1 = stats[ctr + 1]
         if s0 <= s1:
             zz_set = []
