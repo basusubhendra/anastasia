@@ -8,8 +8,12 @@ if __name__ == "__main__":
     num = str(sys.argv[1])
     n = len(num)
     stats = []
+    _stats = []
     for x in range(1, int(n) + 1):
         stats.append(characterize(int(x), pi))
+        _stats.append(characterize(int(x), pi) + 1)
+    print(stats)
+    print(_stats)
     ctr = 0
     s0 = stats[ctr]
     _stats = []
@@ -26,16 +30,7 @@ if __name__ == "__main__":
                 zz = str(zeros1[x])
                 zz_set.append(zz)
             zz_set = zz_set[::-1]
-        """
-        for x in zz_set:
-            print(x)
-        print(" ")
-        """
-        snippet = solver(zz_set, num)
-        input(snippet)
-        """
-        _stats.append(snippet[::-1])
-        """
+        solver(zz_set, num)
         ctr = ctr + 1 
         s0 = stats[ctr]
         print(" ")
