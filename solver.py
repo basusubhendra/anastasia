@@ -7,7 +7,7 @@ def solver(zz_set, num):
     _l = len(zz_set)
     cnt = 0
     nk = int(num[ctr % l])
-    col_count = 1
+    col_count = 0
     snippet = []
     _exit_ = False
     while True:
@@ -32,6 +32,7 @@ def solver(zz_set, num):
            if prev_index > -1 and i_index == prev_index + 1:
                snippet.append(col_count)
                input(col_count)
+               col_count = 0
            nk = nk - 1
         if not "0" in zk[i_index + 1:]:
             cnt = cnt + 1
