@@ -2,7 +2,7 @@
 import sys
 def solver(zz_set, num):
     ctr = 0
-    l = len(ctr)
+    l = len(num)
     nzeros = []
     for x in zz_set:
         nzeros.append(x.count('0'))

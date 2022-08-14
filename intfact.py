@@ -5,15 +5,14 @@ from characterize import *
 from solver import *
 
 if __name__ == "__main__":
-    num = str(sys.argv[2])
+    num = str(sys.argv[1])
     n = len(num)
     stats = []
     for x in range(1, int(n) + 1):
         stats.append(characterize(int(x), pi))
-    print(stats)
     ctr = 0
     s0 = stats[ctr]
-    stats = []
+    _stats = []
     while ctr < len(stats) - 1:
         print("<<<< " + str(ctr + 1) + " <<<< ")
         s1 = stats[ctr + 1]
@@ -27,13 +26,13 @@ if __name__ == "__main__":
                 zz = str(zeros1[x])
                 zz_set.append(zz)
             zz_set = zz_set[::-1]
-        """
         for x in zz_set:
             print(x)
         print(" ")
         """
-        snippet = solve(zz_set, num)
-        stats.append(snippet[::-1])
+        snippet = solver(zz_set, num)
+        _stats.append(snippet[::-1])
+        """
         ctr = ctr + 1 
         s0 = stats[ctr]
         print(" ")
