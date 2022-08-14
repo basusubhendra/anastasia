@@ -55,6 +55,7 @@ def characterize(l, pp):
 if __name__ == "__main__":
     n = str(sys.argv[1])
     stats = []
+    num = str(sys.argv[2])
     for x in range(1, int(n) + 1):
-        stats.append(characterize(int(x), pi))
+        stats.append([characterize(int(x), pi), int(num[x-1])])
     print(stats)
