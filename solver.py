@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys
-from gmpy2 import *
+from fractions import Fraction
 def solver(zz_set, num):
     ctr = 0
     l = len(num)
@@ -13,7 +13,6 @@ def solver(zz_set, num):
     sumx = 0
     last_ctr = 0
     hit = 0
-    gmpy2.get_context().precision=128
     while True:
         i_index = -1
         reset = False
@@ -27,7 +26,7 @@ def solver(zz_set, num):
                    reset = True
                    delta = ctr - last_ctr
                    sumx = sumx + delta
-                   y = input([hit + 1,str(gmpy2.div(gmpy2.mpz(str(sumx)) , gmpy2.mpz(str(l))))])
+                   y = input([hit + 1,Fraction(float(sumx/l)).limit_denominator()])
                    hit = hit + 1
                    if y == 'y':
                        return None
@@ -37,7 +36,5 @@ def solver(zz_set, num):
            nk = nk - 1
         cols.append(col_count)
         ctr = ctr + 1
-        if reset == True and ctr % l == 0:
-            break
         nk = int(num[ctr % l])
     return col_count
