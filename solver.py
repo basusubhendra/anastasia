@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 from fractions import Fraction
+OPT_LEN = 7
 def solver(zz_set, num):
     ctr = 0
     l = len(num)
@@ -26,9 +27,10 @@ def solver(zz_set, num):
                    reset = True
                    delta = ctr - last_ctr
                    sumx = sumx + delta
-                   y = input([hit + 1,Fraction(float(sumx/l)).limit_denominator()])
+                   _frac_ = Fraction(float(sumx/l)).limit_denominator()
                    hit = hit + 1
-                   if y == 'y':
+                   if float(sumx/l) >= int(l / OPT_LEN):
+                       input(hit-1)
                        return None
                    last_ctr = ctr
                    col_count = col_count + 1
