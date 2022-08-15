@@ -14,7 +14,6 @@ if __name__ == "__main__":
     haves = 0
     have_nots = 0
     while True:
-        print("==== " + str(ctr-1) + "=====")
         zz = characterize(int(ctr), pi)
         _zz = zz + 1
         if ctr == 1:
@@ -41,6 +40,7 @@ if __name__ == "__main__":
             print(" ")
             haves = haves + nzeros
             have_nots = have_nots + (7 - nzeros)
+            print("==== " + str(ctr-1) + "=====")
             input(["nzeros =  " + str(nzeros), haves, have_nots, "zeros" , [haves in zeros, have_nots in zeros], "primes" , [haves in primes, have_nots in primes]])
             nzeros = 0
         ctr = ctr + 1 
