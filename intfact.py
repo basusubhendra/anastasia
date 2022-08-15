@@ -41,7 +41,7 @@ if __name__ == "__main__":
             print(" ")
             haves = haves + nzeros
             have_nots = have_nots + (7 - nzeros)
-            input(["nzeros =  " + str(nzeros), haves, have_nots, "zeros" , [haves in zeros], [have_nots in zeros], "primes" , [haves in primes, have_nots in primes]])
+            input(["nzeros =  " + str(nzeros), haves, have_nots, "zeros" , [haves in zeros, have_nots in zeros], "primes" , [haves in primes, have_nots in primes]])
             nzeros = 0
         ctr = ctr + 1 
         s0 = int(s1)
