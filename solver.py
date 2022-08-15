@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import sys
+from gmpy2 import *
 def solver(zz_set, num):
     ctr = 0
     l = len(num)
@@ -11,6 +12,8 @@ def solver(zz_set, num):
     cols = []
     sumx = 0
     last_ctr = 0
+    hit = 0
+    gmpy2.get_context().precision=128
     while True:
         i_index = -1
         reset = False
@@ -24,7 +27,8 @@ def solver(zz_set, num):
                    reset = True
                    delta = ctr - last_ctr
                    sumx = sumx + delta
-                   y = input(float(sumx / l))
+                   y = input([hit + 1,str(gmpy2.div(gmpy2.mpz(str(sumx)) , gmpy2.mpz(str(l))))])
+                   hit = hit + 1
                    if y == 'y':
                        return None
                    last_ctr = ctr
