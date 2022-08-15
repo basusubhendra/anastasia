@@ -30,8 +30,7 @@ def solver(zz_set, num):
                    _frac_ = Fraction(float(sumx/l)).limit_denominator()
                    hit = hit + 1
                    if float(sumx/l) >= int(l / OPT_LEN):
-                       input(hit-1)
-                       return None
+                       return hit - 1
                    last_ctr = ctr
                    col_count = col_count + 1
                zk = zz_set[cnt % _l]
