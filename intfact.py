@@ -34,7 +34,7 @@ if __name__ == "__main__":
                 zz_set.append(zz)
             zz_set = zz_set[::-1]
         snippet = int(solver(zz_set, num))
-        print(snippet % 7)
+        #print(snippet % 7)
         if snippet % 7 == 0:
             nzeros = nzeros + 1
         if (ctr-1) % 7 == 0:
