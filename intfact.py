@@ -1,22 +1,24 @@
 #!/usr/bin/python3
 import sys
+from mpmath import *
 
 if __name__ == "__main__":
+    mp.prec = 512
+    mp.dps = 512
     num = str(sys.argv[1])
-    l = len(num)
     print("Number entered was : " + str(num))
     base_ctr = 0
     init_zero_index = 1
     OPT_LEN = 5
+    BLOCK_OFFSET = 0
     zero_index = init_zero_index
-    f=open("./zeros.txt","r")
     _exit_ = False
+    snippet = []
     while True:
-        f.seek(zero_index - 1)
-        zz = f.readline(1).rstrip()
-        zs = str(zz).split(".")
-        zero = int(zs[0])
-        sieve = zs[1]
+        l = len(num)
+        line = str(zetazero(zero_index).imag).split(".")
+        zero = int(line[0]) 
+        sieve = str(line[1])[BLOCK_OFFSET:BLOCK_OFFSET + 5]
         ctr = (base_ctr + zero - 1) % l
         start_index = (ctr + 1) % l
         end_index = (start_index + OPT_LEN) % l
@@ -34,18 +36,19 @@ if __name__ == "__main__":
             if i % l == end_index:
                 break
         sumx = sum(matches)
+        count = count + len(matches)
         if sumx == 0:
-            zero_index = init_zero_index
-            base_ctr = base_ctr + zero - 1 
-            if base_ctr % l == 0:
+            input([BLOCK_OFFSET, count])
+            snippet.append(count)
+            BLOCK_OFFSET = BLOCK_OFFSET + 5
+            if ctr > 0 and ctr % l == 0:
                 _exit_ = True
         else:
+            print([zero, sieve])
             if len(matches) == 5:
-                snippet.push(count)
-                count = 1
-            else:
-                count = count + 1
-            zero_index = zero_index + sumx
+                    snippet.append(count)
+                    count = 0
+        zero_index = zero_index + sumx
         if _exit_ == True:
             break
     f.close()
