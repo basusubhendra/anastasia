@@ -10,9 +10,9 @@ if __name__ == "__main__":
     OPT_LEN = 5
     zero_index = init_zero_index
     f=open("./zeros.txt","r")
-    f.seek(zero_index - 1)
     _exit_ = False
     while True:
+        f.seek(zero_index - 1)
         zz = f.readline(1).rstrip()
         zs = str(zz).split(".")
         zero = int(zs[0])
