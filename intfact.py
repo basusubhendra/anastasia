@@ -50,33 +50,19 @@ if __name__ == "__main__":
     print("Number entered was : " + str(num))
     rnum = num[::-1]
     _zero_index1 = 1
-    _zero_index2 = 1
     _MULT1 = 1
-    _MULT2 = 1
     _zero_index3 = 1
-    _zero_index4 = 1
     _MULT3 = 1
-    _MULT4 = 1
-    pow2 = pow(2, x)
+    OPT_LEN = 1
     while True:
         set1, zero_index1, MULT1 = characterize(rnum, 0, _zero_index1, _MULT1, OPT_LEN)
         _zero_index1 = zero_index1
         _MULT1 = MULT1
-        set2, zero_index2, MULT2 = characterize(num, 1, _zero_index2, _MULT2, OPT_LEN)
-        _zero_index2 = zero_index2
-        _MULT2 = MULT2
         set3, zero_index3, MULT3 = characterize(num, 0, _zero_index3, _MULT3, OPT_LEN)
         _zero_index3 = zero_index3
         _MULT3 = MULT3
-        set4, zero_index4, MULT4 = characterize(rnum, 1, _zero_index4, _MULT4, OPT_LEN)
-        _zero_index4 = zero_index4
-        _MULT4 = MULT4
         print(set1)
-        print(" ")
-        print(set2)
         print(" ")
         print(set3)
         print(" ")
-        print(set4)
-        print(" ")
-        input("Enter")
+        break
