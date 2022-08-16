@@ -11,6 +11,7 @@ if __name__ == "__main__":
     init_zero_index = 1
     OPT_LEN = 5
     BLOCK_OFFSET = 0
+    OFFSET = 0
     zero_index = init_zero_index
     _exit_ = False
     count = 0 
@@ -20,7 +21,7 @@ if __name__ == "__main__":
         zero = int(line[0]) 
         sieve = str(line[1])[BLOCK_OFFSET:BLOCK_OFFSET + 5]
         ctr = (base_ctr + zero - 1) % l
-        start_index = (ctr + 1) % l
+        start_index = (ctr + OFFSET*OPT_LEN) % l
         end_index = (start_index + OPT_LEN) % l
         i = start_index
         matches = []
@@ -35,15 +36,18 @@ if __name__ == "__main__":
             if i % l == end_index:
                 break
         sumx = sum(matches)
+        count = count + sumx
         if sumx == 0:
+            input([BLOCK_OFFSET, OFFSET, count])
             BLOCK_OFFSET = BLOCK_OFFSET + 5
+            OFFSET = OFFSET + 1
             if ctr > 0 and ctr % l == 0:
                 _exit_ = True
-            input([BLOCK_OFFSET, count])
             count = 0
         else:
-    #        print([zero, sieve])
             count = count + 1
+    #        print([zero, sieve])
+            pass
         zero_index = zero_index + sumx
         if _exit_ == True:
             break
