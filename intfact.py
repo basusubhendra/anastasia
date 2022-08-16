@@ -13,7 +13,7 @@ if __name__ == "__main__":
     BLOCK_OFFSET = 0
     zero_index = init_zero_index
     _exit_ = False
-    snippet = []
+    count = 0 
     while True:
         l = len(num)
         line = str(zetazero(zero_index).imag).split(".")
@@ -24,7 +24,6 @@ if __name__ == "__main__":
         end_index = (start_index + OPT_LEN) % l
         i = start_index
         matches = []
-        count = 0 
         while True:
             nk = num[i % l]
             if nk in sieve:
@@ -36,18 +35,15 @@ if __name__ == "__main__":
             if i % l == end_index:
                 break
         sumx = sum(matches)
-        count = count + len(matches)
         if sumx == 0:
-            input([BLOCK_OFFSET, count])
-            snippet.append(count)
             BLOCK_OFFSET = BLOCK_OFFSET + 5
             if ctr > 0 and ctr % l == 0:
                 _exit_ = True
+            input([BLOCK_OFFSET, count])
+            count = 0
         else:
-            print([zero, sieve])
-            if len(matches) == 5:
-                    snippet.append(count)
-                    count = 0
+    #        print([zero, sieve])
+            count = count + 1
         zero_index = zero_index + sumx
         if _exit_ == True:
             break
