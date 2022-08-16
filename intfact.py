@@ -36,7 +36,6 @@ if __name__ == "__main__":
             if i % l == end_index:
                 break
         sumx = sum(matches)
-        count = count + sumx
         if sumx == 0:
             input([BLOCK_OFFSET, OFFSET, count])
             BLOCK_OFFSET = BLOCK_OFFSET + 5
@@ -47,7 +46,6 @@ if __name__ == "__main__":
         else:
             count = count + 1
     #        print([zero, sieve])
-            pass
         zero_index = zero_index + sumx
         if _exit_ == True:
             break
