@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import sys
+from mpmath import *
 
+PREC=128
 RUN_LENGTH=3
 OPT_LEN=5
 def characterize(num):
@@ -87,16 +89,29 @@ def _match_(l, triplets, state_vec, param):
                 break
     return __bit_patterns__
 
+def _convert_(sums):
+    global PREC
+    zero_index = 1
+    mp.prec=PREC
+    mp.dps=PREC
+    for _sum_ in sums:
+        zero  = str(zetazero(zero_index).imag)[_sum_]
+        if zero == '.':
+            zero = '0'
+        _states_.append(int(zero))
+        zero_index = zero_index + 1
+    return _states_
+
 if __name__ == "__main__":
     num = str(sys.argv[1])
     l = len(num)
     print("Number Entered was: " + str(num))
-    triplets, state_vec = characterize(num)
     #Characterization Phase
-    #print(triplets)
-    #print(state_vec)
+    triplets, state_vec = characterize(num)
     #Analysis Phase
     pi_sums = _match_(l, triplets, state_vec, 0)
-    print(pi_sums)
+    _zero_digits_pi_ = _convert_(pi_sums)
+    print(_zero_digits_pi_)
     e_sums = _match_(l, triplets, state_vec, 1)
-    print(e_sums)
+    _zero_digits_pi_ = _convert_(e_sums)
+    print(_zero_digits_e_)
