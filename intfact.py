@@ -93,7 +93,7 @@ def _match_(l, triplets, state_vec, param):
                 break
     return __bit_patterns__
 
-def _convert_(sums):
+def _extract_(sums):
     global PREC
     _states_ = []
     zero_index = 1
@@ -115,10 +115,8 @@ if __name__ == "__main__":
     triplets, state_vec = characterize(num)
     #Analysis Phase
     pi_sums = _match_(l, triplets, state_vec, 0)
-    print(pi_sums)
-    _zero_digits_pi_ = _convert_(pi_sums)
-    #print(_zero_digits_pi_)
+    _zero_digits_pi_ = _extract_(pi_sums)
+    print(_zero_digits_pi_)
     e_sums = _match_(l, triplets, state_vec, 1)
-    print(e_sums)
-    _zero_digits_e_ = _convert_(e_sums)
-    #print(_zero_digits_e_)
+    _zero_digits_e_ = _extract_(e_sums)
+    print(_zero_digits_e_)
