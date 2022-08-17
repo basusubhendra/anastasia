@@ -114,5 +114,5 @@ if __name__ == "__main__":
     _zero_digits_pi_ = _convert_(pi_sums)
     print(_zero_digits_pi_)
     e_sums = _match_(l, triplets, state_vec, 1)
-    _zero_digits_pi_ = _convert_(e_sums)
+    _zero_digits_e_ = _convert_(e_sums)
     print(_zero_digits_e_)
