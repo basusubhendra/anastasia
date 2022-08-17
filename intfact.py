@@ -12,7 +12,6 @@ def characterize(num):
         while ctr < pos + RUN_LENGTH:
             _nn = _nn + num[ctr % l]
             ctr = ctr + 1
-        input(_nn)
         offsets.append(_nn)
         if ctr % l == 0:
             break
