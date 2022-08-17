@@ -31,6 +31,7 @@ def characterize(num):
 
 def _calculate_(l, bit_pattern):
     global OPT_LEN
+    print("Input: " + str(bit_pattern))
     ctr = 0
     acc = ""
     nn = bit_pattern[ctr]
@@ -40,6 +41,9 @@ def _calculate_(l, bit_pattern):
     _acc_ = 0
     while ctr < OPT_LEN:
         nn = bit_pattern[ctr]
+        input("nn = " + str(nn))
+        if acc:
+            print(acc, int(acc, 2))
         if acc != "" and nn == 1:
             acc = acc + str(nn)
         elif acc == "" and nn == 1:
@@ -50,7 +54,9 @@ def _calculate_(l, bit_pattern):
             _acc_ = _acc_ + int(acc, 2)
             acc = ""
         ctr = ctr + 1
+        input(acc)
     if acc and len(acc) > 0 and acc != "":
+        print("Accumulator " + str(int(acc, 2)))
         _acc_ = _acc_ + int(acc, 2)
     return _acc_
 
@@ -82,9 +88,11 @@ def _match_(l, triplets, state_vec, param):
                 else:
                     bit_pattern.append(0)
                 ctr = ctr + 1
+            input(bit_pattern)
             chars = chars + sumx
             _dec_ = _calculate_(l, bit_pattern)
             _bit_patterns_ = _bit_patterns_ + _dec_
+            input("Bit Patterns " + str(_bit_patterns_))
             if chars % l  == 0: # position modulo L == 0
                 __bit_patterns__.append(_bit_patterns_)
                 break
@@ -119,6 +127,5 @@ if __name__ == "__main__":
     _zero_digits_pi_ = _convert_(pi_sums)
     #print(_zero_digits_pi_)
     e_sums = _match_(l, triplets, state_vec, 1)
-    print(e_sums)
     _zero_digits_e_ = _convert_(e_sums)
     #print(_zero_digits_e_)
