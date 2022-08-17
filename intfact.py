@@ -91,6 +91,7 @@ def _match_(l, triplets, state_vec, param):
 
 def _convert_(sums):
     global PREC
+    _states_ = []
     zero_index = 1
     mp.prec=PREC
     mp.dps=PREC
