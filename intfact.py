@@ -57,6 +57,7 @@ def _match_(l, triplets, state_vec, param):
     __bit_patterns__ = []
     for x in list(zip(triplets, state_vec)):
         chars = int(x[0])
+        _bit_patterns_ = 0
         while True:
             if chars == 0:
                 chars = 1000
@@ -64,7 +65,6 @@ def _match_(l, triplets, state_vec, param):
             ctr = 0
             bit_pattern = []
             sumx = 0
-            _bit_patterns_ = 0
             while ctr < OPT_LEN:
                 c = str(f.read(1))
                 if c in x[1]:
