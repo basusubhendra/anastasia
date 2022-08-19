@@ -42,7 +42,7 @@ def factorize(num):
                    if nk1 == 0:
                        nk1 = 10
                parity1 = 1
-        elif (t[1] == 1 and d == pi10[cnt2]) or (t[1] == 0 and d == e10[cnt2]):
+        if (t[1] == 1 and d == pi10[cnt2]) or (t[1] == 0 and d == e10[cnt2]):
                cnt2 = cnt2 + 1
                nk2 = nk2 - 1
                if nk2 == 0:
