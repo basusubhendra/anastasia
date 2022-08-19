@@ -6,17 +6,7 @@ from e import e
 pi10=['3','0','1','4','1','5','9','2','6','5']
 e10=['2','0','7','1','8','2','8','1','8','2']
 
-def complement11(num):
-    c11 = ""
-    for x in num:
-        if int(x) == 0:
-            x = 10
-        else:
-            x = int(x)
-        c11 = c11 + str((11-x) % 10)
-    return c11
-
-def _analyze(num, num11, sums):
+def _analyze(num11, sums):
     ctr = 0
     s0 = sums[ctr]
     ctr = ctr + 1
@@ -26,14 +16,8 @@ def _analyze(num, num11, sums):
     pivots = []
     while ctr < len(sums):
         s = sums[ctr]
-        delta = s - s0
+        delta = s0 - s
         if delta > 0 and delta == int(num11[cnt]):
-            s0 = s
-            cnt = cnt + 1
-            pivots.append(ctr)
-            if cnt == l:
-                return True, pivots
-        elif delta < 0 and abs(delta) == int(num[cnt]):
             s0 = s
             cnt = cnt + 1
             pivots.append(ctr)
@@ -65,12 +49,14 @@ def analyze(num, pi_hits, e_hits, pp, ee):
             x3 = 10
         else:
             x3 = int(x[3])
-        sums.append(int(x0) + int(x1) + int(x2) + int(x3))
-    num11 = complement11(num)
-    success, pivots = _analyze(num, num11, sums[::-1])
-    if success:
-       print(pivots)
-    return success, pivots
+        sums.append(set(sorted([int(x[0]), int(x[1]), int(x[2]), int(x[3])])))
+    success =  sums[0] in sums[1:]
+    index = -1
+    if success == True:
+        index = sums[1:].index(sums[0])
+    else:
+        index = -1
+    return success, index
 
 def factorize(num):
     global pi10
@@ -132,9 +118,9 @@ def factorize(num):
             hit = hit + 1
             pp = pi[:hit]
             ee = e[:hit][::-1]
-            success, bin_factor = analyze(num, pi_hits, e_hits, pp, ee)
+            success, delta = analyze(num, pi_hits, e_hits, pp, ee)
             if success == True:
-                sys.exit(0)
+                input([success, delta])
             """
             #success, bin_factor1, bin_factor2 = analyze(pi_hits, e_hits, pp, ee)
             if success == True:
