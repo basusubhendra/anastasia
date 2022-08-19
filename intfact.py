@@ -3,6 +3,7 @@ import sys
 from pi import pi
 from e import e
 from zeros import zeros
+from primes import primes
 
 pi10=['3','0','1','4','1','5','9','2','6','5']
 e10=['2','0','7','1','8','2','8','1','8','2']
@@ -65,9 +66,10 @@ def factorize(num):
             if last_hit1 == last_hit2 and (last_hit1 + 1) % l  == counter % l:
                 if (hit + OPT_LEN) in zeros:
                     states.append(hit+OPT_LEN)
-                    #y = input(num[(counter - 1) % l])
-                    #if y == 'y':
-                    if counter == l:
+                    _pp = pi[:counter]
+                    _ee = e[:counter][::-1]
+                    nn = int(_pp[-1] + _ee[-1])
+                    if nn in primes and counter % l == 0:
                         f.close()
                         g.close()
                         return states
@@ -82,7 +84,6 @@ def _calculate_statistical_distance(pp, ee, x, y):
     return _states[x - 1], _states[y-1]
 
 def _calculate_zero_index_delta(p, q):
-    print(p, q)
     z1 = 0
     z2 = 0
     if int(p) in zeros:
@@ -106,16 +107,14 @@ if __name__ == "__main__":
     factor = []
     ctr = 0
     print(states)
-    """
     while ctr < len(states) - 1:
         s0 = states[ctr]
         s1 = states[ctr + 1]
-        pp = pi[:s0]
+        pp = pi[:s1]
         ee = e[:s1][::-1]
         dist_x, dist_y = _calculate_statistical_distance(pp, ee, s0, s1)
         delta = _calculate_zero_index_delta(dist_x, dist_y)
         factor.append(delta)
         ctr = ctr + 1
     print(factor)
-    """
     #print("num = " + factor1 + " X " + factor2)
