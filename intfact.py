@@ -24,11 +24,13 @@ def _analyze(num, num11, sums):
         s = sums[ctr]
         delta = s - s0
         if delta > 0 and delta == int(num11[cnt]):
+            s0 = s
             cnt = cnt + 1
             pivots.append(ctr)
             if cnt == l:
                 return True, pivots
         elif delta < 0 and abs(delta) == int(num[cnt]):
+            s0 = s
             cnt = cnt + 1
             pivots.append(ctr)
             if cnt == l:
