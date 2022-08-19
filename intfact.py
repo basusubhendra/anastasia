@@ -48,10 +48,9 @@ def analyze(num, pi_hits, e_hits, pp, ee):
         sums.append(int(x[0]) + int(x[1]) + int(x[2]) + int(x[3]))
     num11 = complement11(num)
     success, pivots = _analyze(num, num11, sums[::-1])
-    input([sums, success])
-    if success == True:
-        input(pivots)
-        return success
+    if success:
+       print(pivots)
+    return success, pivots
 
 def factorize(num):
     global pi10
@@ -113,7 +112,7 @@ def factorize(num):
             hit = hit + 1
             pp = pi[:hit]
             ee = e[:hit][::-1]
-            success = analyze(num, pi_hits, e_hits, pp, ee)
+            success, bin_factor = analyze(num, pi_hits, e_hits, pp, ee)
             if success == True:
                 sys.exit(0)
             """
