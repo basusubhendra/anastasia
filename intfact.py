@@ -9,7 +9,11 @@ e10=['2','0','7','1','8','2','8','1','8','2']
 def complement11(num):
     c11 = ""
     for x in num:
-        c11 = c11 + str((11-int(x)) % 10)
+        if int(x) == 0:
+            x = 10
+        else:
+            x = int(x)
+        c11 = c11 + str((11-x) % 10)
     return c11
 
 def _analyze(num, num11, sums):
