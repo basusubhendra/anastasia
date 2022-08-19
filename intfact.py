@@ -64,6 +64,8 @@ def factorize(num):
                 else:
                     reconstructed_number = reconstructed_number + d
                 if reconstructed_number == num:
+                    f.close()
+                    g.close()
                     return bin_factor1, bin_factor2
             else:
                 pass
@@ -73,8 +75,6 @@ def factorize(num):
             e_ones = e_ones + 1
         elif parity1 == 0 and parity2 == 0:
             pass
-    f.close()
-    g.close()
 
 if __name__ == "__main__":
     num = str(sys.argv[1])
