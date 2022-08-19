@@ -91,10 +91,14 @@ def _calculate_zero_index_delta(p, q):
     z2 = 0
     if int(p) in zeros:
         z1 = (zeros.index(int(p)) + 1) % 10
+    else:
+        z1 = None
     if int(q) in zeros:
         z2 = (zeros.index(int(q)) + 1) % 10
+    else:
+        z2 = None
     print("Inside calculation of zero index markers in order to measure statistical distance ")
-    input([z1, z2])
+    return [z1, z2]
 
 if __name__ == "__main__":
     num = str(sys.argv[1])
