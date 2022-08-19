@@ -78,9 +78,34 @@ def factorize(num):
         elif parity1 == 0 and parity2 == 0:
             pass
 
+def _calculate_statistical_distance(x, y):
+    pp = pi[:y]
+    ee = e[:y][::-1]
+    _states = []
+    for x in list(zip(pp, ee)):
+        _states.append(int(x[0] + x[1]))
+    return _states[x - 1], _states[y - 1]
+
+def _calculate_zero_index_delta(p, q):
+    if int(p) in zeros:
+        z1 = zeros.index(int(p))
+    if int(q) in zeros:
+        z2 = zeros.index(int(q))
+    input(z1, z2)
+    sys.exit(0)
+
 if __name__ == "__main__":
     num = str(sys.argv[1])
     print("Number Entered was : " + str(num))
     states = factorize(num)
     print(states)
+    factor = []
+    ctr = 0
+    while ctr < len(states) - 1:
+        s0 = states[ctr]
+        s1 = states[ctr + 1]
+        dist_x, dist_y = _calculate_statistical_distance(s0, s1)
+        delta = _calculate_zero_index_delta(dist_x, dist_y)
+        factor.append(delta)
+    print(factor)
     #print("num = " + factor1 + " X " + factor2)
