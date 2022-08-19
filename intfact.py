@@ -5,12 +5,17 @@ from e import e
 
 pi10=['3','0','1','4','1','5','9','2','6','5']
 e10=['2','0','7','1','8','2','8','1','8','2']
+
+def analyze(pi_hits, e_hits, pp, ee):
+    sums = []
+    for x in list(zip(pp, pi_hits, e_hits, ee)):
+        sums.append(int(x[0]) + int(x[1]) + int(x[2]) + int(x[3]))
+    input(sums)
+
 def factorize(num):
     global pi10
     global e10
     l = len(num)
-    bin_factor1 = ""
-    bin_factor2 = ""
     ctr1 = 0
     ctr2 = 0
     nk1 = int(num[ctr1 % l])
@@ -67,33 +72,13 @@ def factorize(num):
             hit = hit + 1
             pp = pi[:hit]
             ee = e[:hit][::-1]
+            success, bin_factor1, bin_factor2 = analyze(pi_hits, e_hits, pp, ee)
+            if success == True:
+                return int(bin_factor1), int(bin_factor2)
             input([num[ctr2 % l],num[ctr1 % l]])
-        """
-        if parity1 == 1 and parity2 == 1:
-            if ((t3 == 0 and finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]) or (t3 == 1 and finished_nk1 == num[counter] and finished_nk2 == num[counter + 1])) or (finished_nk2 == num[counter] and finished_nk1 == num[counter]):
-                bin_factor1 = bin_factor1 + str(bin(pi_ones)[2:])[::-1]
-                bin_factor2 = bin_factor2 + str(bin(e_ones)[2:])[::-1]
-                pi_ones = 0
-                e_ones = 0
-                if (t3 == 0 and finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]) or (t3 == 1 and finished_nk1 == num[counter] and finished_nk2 == num[counter + 1]):
-                    if t3 == 0:
-                        reconstructed_number = reconstructed_number + c
-                    elif t3 == 1:
-                        reconstructed_number = reconstructed_number + d
-                else:
-                    reconstructed_number = reconstructed_number + d
-                t3 = 1 - t3
-                counter = counter + 1
-                if reconstructed_number == num:
-                    f.close()
-                    g.close()
-                    return bin_factor1, bin_factor2
-            else:
-                pass
-        """
 
 if __name__ == "__main__":
     num = str(sys.argv[1])
     print("Number Entered was : " + str(num))
-    bin_factor1, bin_factor2 = factorize(num)
-    print("num = " + str(int(bin_factor1, 2)) + " X " + str(int(bin_factor2, 2)))
+    factor1, factor2 = factorize(num)
+    print("num = " + factor1 + " X " + factor2)
