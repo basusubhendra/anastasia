@@ -33,7 +33,6 @@ def factorize(num):
         parity2 = 0
         finished_nk1 = ""
         finished_nk2 = ""
-        input([c,d])
         if (t[0] == 0 and c == e10[cnt1]) or (t[0] == 1 and c == pi10[cnt1]):
                cnt1 = cnt1 + 1
                nk1 = nk1 - 1
@@ -58,10 +57,11 @@ def factorize(num):
                    if nk2 == 0:
                        nk2 = 10
                    parity2 = 1
-        if parity1 == 1 or parity2 == 1:
-            input([parity1, parity2])
+        if parity1 == 1 and parity2 == 1:
+            input([num[ctr2 % l],num[ctr1 % l]])
         if parity1 == 1 and parity2 == 1:
             if (finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]) or (finished_nk2 == num[counter] and finished_nk1 == num[counter]):
+                counter = counter + 1
                 bin_factor1 = bin_factor1 + str(bin(pi_ones)[2:])[::-1]
                 bin_factor2 = bin_factor2 + str(bin(e_ones)[2:])[::-1]
                 pi_ones = 0
