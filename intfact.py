@@ -23,12 +23,12 @@ def _analyze(num, num11, sums):
     while ctr < len(sums):
         s = sums[ctr]
         delta = s - s0
-        if delta > 0 and delta == num11[cnt]:
+        if delta > 0 and delta == int(num11[cnt]):
             cnt = cnt + 1
             pivots.append(ctr)
             if cnt == l:
                 return True, pivots
-        elif delta < 0 and abs(delta) == num[cnt]:
+        elif delta < 0 and abs(delta) == int(num[cnt]):
             cnt = cnt + 1
             pivots.append(ctr)
             if cnt == l:
@@ -42,6 +42,7 @@ def analyze(num, pi_hits, e_hits, pp, ee):
         sums.append(int(x[0]) + int(x[1]) + int(x[2]) + int(x[3]))
     num11 = complement11(num)
     success, pivots = _analyze(num, num11, sums[::-1])
+    input([sums, success])
     if success == True:
         input(pivots)
 
