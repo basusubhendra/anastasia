@@ -6,11 +6,44 @@ from e import e
 pi10=['3','0','1','4','1','5','9','2','6','5']
 e10=['2','0','7','1','8','2','8','1','8','2']
 
-def analyze(pi_hits, e_hits, pp, ee):
+def complement11(num):
+    c11 = ""
+    for x in num:
+        c11 = c11 + str((11-int(x)) % 10)
+    return c11
+
+def _analyze(num, num11, sums):
+    ctr = 0
+    s0 = sums[ctr]
+    ctr = ctr + 1
+    success = False
+    cnt = 0
+    l = len(num)
+    pivots = []
+    while ctr < len(sums):
+        s = sums[ctr]
+        delta = s - s0
+        if delta > 0 and delta == num11[cnt]:
+            cnt = cnt + 1
+            pivots.append(ctr)
+            if cnt == l:
+                return True, pivots
+        elif delta < 0 and abs(delta) == num[cnt]:
+            cnt = cnt + 1
+            pivots.append(ctr)
+            if cnt == l:
+                return True, pivots
+        ctr = ctr + 1
+    return False, None
+
+def analyze(num, pi_hits, e_hits, pp, ee):
     sums = []
     for x in list(zip(pp, pi_hits, e_hits, ee)):
         sums.append(int(x[0]) + int(x[1]) + int(x[2]) + int(x[3]))
-    input(sums)
+    num11 = complement11(num)
+    success, pivots = _analyze(num, num11, sums[::-1])
+    if success == True:
+        input(pivots)
 
 def factorize(num):
     global pi10
@@ -72,7 +105,7 @@ def factorize(num):
             hit = hit + 1
             pp = pi[:hit]
             ee = e[:hit][::-1]
-            analyze(pi_hits, e_hits, pp, ee)
+            analyze(num, pi_hits, e_hits, pp, ee)
             """
             success, bin_factor1, bin_factor2 = analyze(pi_hits, e_hits, pp, ee)
             if success == True:
