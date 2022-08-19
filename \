@@ -31,6 +31,12 @@ def factorize(num):
     counter = 1
     hit = 0
     states = []
+    pos1 = 0
+    pos2 = 0
+    posits1 = []
+    posits2 = []
+    _posits1 = []
+    _posits2 = []
     while True:
         c = str(f.read(1))
         d = str(g.read(1))
@@ -61,6 +67,10 @@ def factorize(num):
                        nk2 = 10
                    parity2 = 1
         if parity1 == 1 and parity2 == 1:
+            posits1.append(_posits1)
+            posits2.append(_posits2)
+            _posits1 = []
+            _posits2 = []
             hit = hit + 1
             if last_hit1 == last_hit2 and (last_hit1 + 1) % l  == counter % l:
                 if (hit + OPT_LEN) in zeros:
@@ -70,8 +80,16 @@ def factorize(num):
                     if counter == l:
                         f.close()
                         g.close()
-                        return states
+                        return states, posits1, posits2
                     counter = counter + 1
+        elif parity1 == 1 and parity2 == 0:
+            _posits1.append(pos1)
+        elif parity1 == 0 and parity2 == 1:
+            _posits2.append(pos2)
+        elif parity1 == 0 and parity2 == 0:
+            pass
+        pos1 = pos1 + 1
+        pos2 = pos2 + 1
 
 def _calculate_statistical_distance(pp, ee, x, y):
     _states = []
@@ -102,10 +120,12 @@ def _calculate_zero_index_delta(p, q):
 if __name__ == "__main__":
     num = str(sys.argv[1])
     print("Number Entered was : " + str(num))
-    states = factorize(num)
+    states, posits1, posits2 = factorize(num)
     factor = []
     ctr = 0
     print(states)
+    print(posits1)
+    #print(posits2)
     """
     while ctr < len(states) - 1:
         s0 = states[ctr]
