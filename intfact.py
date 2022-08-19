@@ -25,7 +25,8 @@ def factorize(num):
     f = open("./pi.txt","r")
     g = open("./e.txt","r")
     counter = 0
-    reconstructed_number = ""
+    t3 = 0
+    reconstructed_number = num[0] 
     while True:
         c = str(f.read(1))
         d = str(g.read(1))
@@ -60,16 +61,20 @@ def factorize(num):
         if parity1 == 1 and parity2 == 1:
             input([num[ctr2 % l],num[ctr1 % l]])
         if parity1 == 1 and parity2 == 1:
-            if (finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]) or (finished_nk2 == num[counter] and finished_nk1 == num[counter]):
-                counter = counter + 1
+            if ((t3 == 0 and finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]) or (t3 == 1 and finished_nk1 == num[counter] and finished_nk2 == num[counter + 1])) or (finished_nk2 == num[counter] and finished_nk1 == num[counter]):
                 bin_factor1 = bin_factor1 + str(bin(pi_ones)[2:])[::-1]
                 bin_factor2 = bin_factor2 + str(bin(e_ones)[2:])[::-1]
                 pi_ones = 0
                 e_ones = 0
-                if finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]:
-                    reconstructed_number = reconstructed_number + d + c
+                if (t3 == 0 and finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]) or (t3 == 1 and finished_nk1 == num[counter] and finished_nk2 == num[counter + 1]):
+                    if t3 == 0:
+                        reconstructed_number = reconstructed_number + c
+                    elif t3 == 1:
+                        reconstructed_number = reconstructed_number + d
                 else:
                     reconstructed_number = reconstructed_number + d
+                t3 = 1 - t3
+                counter = counter + 1
                 if reconstructed_number == num:
                     f.close()
                     g.close()
