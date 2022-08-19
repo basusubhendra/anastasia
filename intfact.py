@@ -14,9 +14,9 @@ def factorize(num):
     nk1 = int(num[ctr1 % l])
     if nk1 == 0:
         nk1 = 10
+    nk2 = int(num[ctr2 % l])
     if nk2 == 0:
         nk2 = 10
-    nk2 = int(num[ctr2 % l])
     cnt1 = 0
     cnt2 = 0
     t = [0, 1]
