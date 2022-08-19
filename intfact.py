@@ -28,8 +28,8 @@ def factorize(num):
     reconstructed_number = ""
     hit = 0
     mid = int(l / 2)
-    pi_hits = []
-    e_hits = []
+    pi_vector = []
+    e_vector = []
     pi_ones = 0
     e_ones = 0
     while True:
@@ -64,11 +64,12 @@ def factorize(num):
                        nk2 = 10
                    parity2 = 1
         if parity1 == 1 and parity2 == 1:
-            print([pi_ones, e_ones])
+            pi_vector.append(pi_ones)
+            e_vector.append(e_ones)
             pi_ones = 0
             e_ones = 0
             if hit == mid:
-                sys.exit(0)
+                return pi_vector, e_vector
             hit = hit + 1
         elif parity1 == 1 and parity2 == 0:
             pi_ones = pi_ones + 1
@@ -77,8 +78,12 @@ def factorize(num):
         elif parity1 == 0 and parity2 == 0:
             pass
 
+def emit_factors(pv, ev, num):
+    pass
+
 if __name__ == "__main__":
     num = str(sys.argv[1])
     print("Number Entered was : " + str(num))
-    factor1, factor2 = factorize(num)
+    pv, ev = factorize(num)
+    factor1, factor2 = emit_factors(pv, ev, num)
     print("num = " + factor1 + " X " + factor2)
