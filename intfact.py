@@ -11,6 +11,8 @@ def factorize(num):
     bin_factor2 = ""
     ctr1 = 0
     ctr2 = 0
+    pi_ones = 0
+    e_ones = 0
     nk1 = int(num[ctr1 % l])
     if nk1 == 0:
         nk1 = 10
