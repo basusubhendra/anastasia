@@ -62,39 +62,39 @@ def factorize(num):
                    parity2 = 1
         if parity1 == 1 and parity2 == 1:
             hit = hit + 1
-            if last_hit1 == last_hit2 and (last_hit1 + 1)  == counter:
+            if last_hit1 == last_hit2 and (last_hit1 + 1) % l  == counter % l:
                 if (hit + OPT_LEN) in zeros:
                     states.append(hit+OPT_LEN)
-                   # input("pi-e hit" + "\t" + str(hit))
-                    if counter == l:
+                    y = input(num[(counter - 1) % l])
+                    if y == 'y':
+                    #if counter == l:
                         f.close()
                         g.close()
                         return states
                     counter = counter + 1
-        elif parity1 == 1 and parity2 == 0:
-            pass
-        elif parity1 == 0 and parity2 == 1:
-            pass
-        elif parity1 == 0 and parity2 == 0:
-            pass
 
-def _calculate_statistical_distance(x, y):
-    pp = pi[:y]
-    ee = e[:y][::-1]
+def _calculate_statistical_distance(pp, ee, x, y):
     _states = []
-    for _x in list(zip(pp, ee)):
-        _states.append(int(_x[0] + _x[1]))
-    return _states[x - 1], _states[y - 1]
+    ctr = 0
+    while ctr < len(pp):
+        _states.append(int(pp[ctr] + ee[ctr]))
+        ctr = ctr + 1
+    return _states[x - 1], _states[y-1]
 
 def _calculate_zero_index_delta(p, q):
+    print(p, q)
     z1 = 0
     z2 = 0
     if int(p) in zeros:
         z1 = (zeros.index(int(p)) + 1) % 10
+    elif int(str(p)[::-1]) in zeros:
+        z1 = -((zeros.index(int(str(p)[::-1])) + 1) % 10)
     else:
         z1 = None
     if int(q) in zeros:
         z2 = (zeros.index(int(q)) + 1) % 10
+    elif int(str(q)[::-1]) in zeros:
+        z2 = -((zeros.index(int(str(q)[::-1])) + 1) % 10)
     else:
         z2 = None
     return [z1, z2]
@@ -105,12 +105,17 @@ if __name__ == "__main__":
     states = factorize(num)
     factor = []
     ctr = 0
+    print(states)
+    """
     while ctr < len(states) - 1:
         s0 = states[ctr]
         s1 = states[ctr + 1]
-        dist_x, dist_y = _calculate_statistical_distance(s0, s1)
+        pp = pi[:s0]
+        ee = e[:s1][::-1]
+        dist_x, dist_y = _calculate_statistical_distance(pp, ee, s0, s1)
         delta = _calculate_zero_index_delta(dist_x, dist_y)
         factor.append(delta)
         ctr = ctr + 1
     print(factor)
+    """
     #print("num = " + factor1 + " X " + factor2)
