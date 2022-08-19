@@ -65,10 +65,13 @@ def factorize(num):
             hit = hit + 1
             if last_hit1 == last_hit2 and (last_hit1 + 1) % l  == counter % l:
                 if (hit + OPT_LEN) in zeros:
-                    states.append(hit+OPT_LEN)
                     _pp = pi[:counter]
                     _ee = e[:counter][::-1]
                     nn = int(_pp[-1] + _ee[-1])
+                    if nn in primes:
+                        states.append(hit+OPT_LEN)
+                    else:
+                        states.append(None)
                     if nn in primes and counter % l == 0:
                         f.close()
                         g.close()
@@ -107,6 +110,7 @@ if __name__ == "__main__":
     factor = []
     ctr = 0
     print(states)
+    """
     while ctr < len(states) - 1:
         s0 = states[ctr]
         s1 = states[ctr + 1]
@@ -117,4 +121,5 @@ if __name__ == "__main__":
         factor.append(delta)
         ctr = ctr + 1
     print(factor)
+    """
     #print("num = " + factor1 + " X " + factor2)
