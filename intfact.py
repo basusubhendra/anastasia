@@ -7,7 +7,7 @@ from primes import primes
 
 pi10=['3','0','1','4','1','5','9','2','6','5']
 e10=['2','0','7','1','8','2','8','1','8','2']
-OPT_LEN = 5
+OPT_LEN = 8
 def factorize(num):
     global pi10
     global e10
@@ -65,14 +65,8 @@ def factorize(num):
             hit = hit + 1
             if last_hit1 == last_hit2 and (last_hit1 + 1) % l  == counter % l:
                 if (hit + OPT_LEN) in zeros:
-                    _pp = pi[:counter]
-                    _ee = e[:counter][::-1]
-                    nn = int(_pp[-1] + _ee[-1])
-                    if nn in primes:
-                        states.append(hit+OPT_LEN)
-                    else:
-                        states.append(None)
-                    if nn in primes and counter % l == 0:
+                    states.append(hit+OPT_LEN)
+                    if counter % l == 0:
                         f.close()
                         g.close()
                         return states
