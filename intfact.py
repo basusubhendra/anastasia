@@ -64,8 +64,8 @@ def factorize(num):
                        nk2 = 10
                    parity2 = 1
         if parity1 == 1 and parity2 == 1:
-            pi_vector.append(pi_ones)
-            e_vector.append(e_ones)
+            pi_vector.append(str(bin(pi_ones)[2:]))
+            e_vector.append(str(bin(e_ones)[2:]))
             pi_ones = 0
             e_ones = 0
             if hit == mid:
