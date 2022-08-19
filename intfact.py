@@ -45,7 +45,27 @@ def _analyze(num, num11, sums):
 def analyze(num, pi_hits, e_hits, pp, ee):
     sums = []
     for x in list(zip(pp, pi_hits, e_hits, ee)):
-        sums.append(int(x[0]) + int(x[1]) + int(x[2]) + int(x[3]))
+        x0 = 0
+        x1 = 0
+        x2 = 0
+        x3 = 0
+        if int(x[0]) == 0:
+            x0 = 10
+        else:
+            x0 = int(x[0])
+        if int(x[1]) == 0:
+            x1 = 10
+        else:
+            x1 = int(x[1])
+        if int(x[2]) == 0:
+            x2 = 10
+        else:
+            x2 = int(x[2])
+        if int(x[3]) == 0:
+            x3 = 10
+        else:
+            x3 = int(x[3])
+        sums.append(int(x0) + int(x1) + int(x2) + int(x3))
     num11 = complement11(num)
     success, pivots = _analyze(num, num11, sums[::-1])
     if success:
