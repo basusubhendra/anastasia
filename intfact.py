@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import sys
+from pi import pi
+from e import e
 
 pi10=['3','0','1','4','1','5','9','2','6','5']
 e10=['2','0','7','1','8','2','8','1','8','2']
@@ -24,7 +26,10 @@ def factorize(num):
     g = open("./e.txt","r")
     counter = 0
     t3 = 0
-    reconstructed_number = num[0] 
+    reconstructed_number = ""
+    hit = 0
+    pi_hits = []
+    e_hits = []
     while True:
         c = str(f.read(1))
         d = str(g.read(1))
@@ -57,6 +62,11 @@ def factorize(num):
                        nk2 = 10
                    parity2 = 1
         if parity1 == 1 and parity2 == 1:
+            pi_hits.append(num[ctr1 % l])
+            e_hits.append(num[ctr2 % l])
+            hit = hit + 1
+            pp = pi[:hit]
+            ee = e[:hit][::-1]
             input([num[ctr2 % l],num[ctr1 % l]])
         """
         if parity1 == 1 and parity2 == 1:
