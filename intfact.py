@@ -72,10 +72,13 @@ def factorize(num):
             hit = hit + 1
             pp = pi[:hit]
             ee = e[:hit][::-1]
+            analyze(pi_hits, e_hits, pp, ee)
+            """
             success, bin_factor1, bin_factor2 = analyze(pi_hits, e_hits, pp, ee)
             if success == True:
                 return int(bin_factor1), int(bin_factor2)
             input([num[ctr2 % l],num[ctr1 % l]])
+            """
 
 if __name__ == "__main__":
     num = str(sys.argv[1])
