@@ -31,35 +31,42 @@ def factorize(num):
         d = str(g.read(1))
         parity1 = 0
         parity2 = 0
+        finished_nk1 = ""
+        finished_nk2 = ""
+        input([c,d])
         if (t[0] == 0 and c == e10[cnt1]) or (t[0] == 1 and c == pi10[cnt1]):
                cnt1 = cnt1 + 1
                nk1 = nk1 - 1
                if nk1 == 0:
+                   finished_nk1 = num[ctr1 % l]
                    cnt1 = 0
                    t[0] = 1 - t[0]
                    ctr1 = ctr1 + 1
                    nk1 = int(num[ctr1 % l])
                    if nk1 == 0:
                        nk1 = 10
-               parity1 = 1
+                   parity1 = 1
         if (t[1] == 1 and d == pi10[cnt2]) or (t[1] == 0 and d == e10[cnt2]):
                cnt2 = cnt2 + 1
                nk2 = nk2 - 1
                if nk2 == 0:
+                   finished_nk2 = num[ctr2 % l]
                    cnt2 = 0
                    t[1] = 1 - t[1]
                    ctr2 = ctr2 + 1
                    nk2 = int(num[ctr2 % l])
                    if nk2 == 0:
                        nk2 = 10
-               parity2 = 1
+                   parity2 = 1
+        if parity1 == 1 or parity2 == 1:
+            input([parity1, parity2])
         if parity1 == 1 and parity2 == 1:
-            if (d == num[counter] and c == num[counter + 1]) or (d == num[counter] and c == num[counter]):
+            if (finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]) or (finished_nk2 == num[counter] and finished_nk1 == num[counter]):
                 bin_factor1 = bin_factor1 + str(bin(pi_ones)[2:])[::-1]
                 bin_factor2 = bin_factor2 + str(bin(e_ones)[2:])[::-1]
                 pi_ones = 0
                 e_ones = 0
-                if d == num[counter] and c == num[counter + 1]:
+                if finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]:
                     reconstructed_number = reconstructed_number + d + c
                 else:
                     reconstructed_number = reconstructed_number + d
