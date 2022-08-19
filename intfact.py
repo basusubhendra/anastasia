@@ -47,6 +47,7 @@ def analyze(num, pi_hits, e_hits, pp, ee):
     input([sums, success])
     if success == True:
         input(pivots)
+        return success
 
 def factorize(num):
     global pi10
@@ -108,12 +109,13 @@ def factorize(num):
             hit = hit + 1
             pp = pi[:hit]
             ee = e[:hit][::-1]
-            analyze(num, pi_hits, e_hits, pp, ee)
+            success = analyze(num, pi_hits, e_hits, pp, ee)
+            if success == True:
+                sys.exit(0)
             """
-            success, bin_factor1, bin_factor2 = analyze(pi_hits, e_hits, pp, ee)
+            #success, bin_factor1, bin_factor2 = analyze(pi_hits, e_hits, pp, ee)
             if success == True:
                 return int(bin_factor1), int(bin_factor2)
-            input([num[ctr2 % l],num[ctr1 % l]])
             """
 
 if __name__ == "__main__":
