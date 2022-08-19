@@ -11,8 +11,6 @@ def factorize(num):
     bin_factor2 = ""
     ctr1 = 0
     ctr2 = 0
-    pi_ones = 0
-    e_ones = 0
     nk1 = int(num[ctr1 % l])
     if nk1 == 0:
         nk1 = 10
@@ -60,6 +58,7 @@ def factorize(num):
                    parity2 = 1
         if parity1 == 1 and parity2 == 1:
             input([num[ctr2 % l],num[ctr1 % l]])
+        """
         if parity1 == 1 and parity2 == 1:
             if ((t3 == 0 and finished_nk2 == num[counter] and finished_nk1 == num[counter + 1]) or (t3 == 1 and finished_nk1 == num[counter] and finished_nk2 == num[counter + 1])) or (finished_nk2 == num[counter] and finished_nk1 == num[counter]):
                 bin_factor1 = bin_factor1 + str(bin(pi_ones)[2:])[::-1]
@@ -81,12 +80,7 @@ def factorize(num):
                     return bin_factor1, bin_factor2
             else:
                 pass
-        elif parity1 == 1 and parity2 == 0:
-            pi_ones = pi_ones + 1
-        elif parity1 == 0 and parity2 == 1:
-            e_ones = e_ones + 1
-        elif parity1 == 0 and parity2 == 0:
-            pass
+        """
 
 if __name__ == "__main__":
     num = str(sys.argv[1])
