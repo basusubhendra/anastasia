@@ -97,7 +97,6 @@ def _calculate_zero_index_delta(p, q):
         z2 = (zeros.index(int(q)) + 1) % 10
     else:
         z2 = None
-    print("Inside calculation of zero index markers in order to measure statistical distance ")
     return [z1, z2]
 
 if __name__ == "__main__":
