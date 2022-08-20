@@ -17,7 +17,7 @@ def factorize(num):
         hit = 0
         #pi digit specific counter
         pivots = []
-        target = _nk1
+        target = ctr 
         f.seek(0)
         while True:
             c = str(f.read(1))
@@ -27,12 +27,12 @@ def factorize(num):
                 nk = num[cnt % l]
                 if cnt % l == 0:
                     hit = hit + 1
-                if __nk == target and cnt % l == 0:
+                if __nk == num[target % l] and cnt % l == 0:
                     pivots.append(hit)
-                    if target == _nk2:
+                    if target == ctr + 1:
                         count = count + 1
                         break
-                    target = _nk2
+                    target = ctr + 1 
             count = count + 1
         _pivots.append(pivots)
         ctr = ctr + 1
